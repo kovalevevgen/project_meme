@@ -1,0 +1,6 @@
+.gitignore
+/localconfig/
+docker-compose.yml
+.env
+*.gitignore
+/vendor/
