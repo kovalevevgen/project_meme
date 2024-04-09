@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands\Meme;
 
+use App\Models\Bots;
 use App\Models\PhotoLinks;
 use App\Services\Messages\Provider\Telegram\Telegram;
 use Illuminate\Console\Command;
@@ -41,6 +42,7 @@ class SendCommand extends Command
         $chat = '-1001897151240';
         (new Telegram)->send(
             $chat,
+            Bots::where(['provider' => 'Telegram', 'active'=> 1])->first(),
             json_encode($test),
             Telegram::SEND_MEDIA_GROUP,
             Telegram::TYPE_MEDIA

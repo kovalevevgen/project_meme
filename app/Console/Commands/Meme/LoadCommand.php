@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands\Meme;
 
+use App\Models\Bots;
 use App\Models\PhotoLinks;
 use App\Models\Settings;
 use App\Services\Messages\Provider\Telegram\Telegram;
@@ -44,6 +45,7 @@ class LoadCommand extends Command
             Cache::put('search_thread',1, now()->addMinutes(10));
             (new Telegram)->send(
                 $chat,
+                Bots::where(['provider' => 'Telegram', 'active'=> 1])->first(),
                 'Тред удален. Найди новый, одебилевший от нихуя неделания долбоеб. Извените, сегодня больше без мэмов',
                 Telegram::SEND_MESSAGE,
                 Telegram::TYPE_TEXT
