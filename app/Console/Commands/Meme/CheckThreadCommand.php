@@ -37,9 +37,9 @@ class CheckThreadCommand extends Command
                 if (strpos($thread['comment'],'ZASMOBOS')) {
                     Cache::delete('search_thread')
                     (new Settings)->fill([
-                        'thread_id' => $thread['num'],
-                        'last_thread_id' => $thread['num']
-                    ])->save();
+                            'thread_id' => $thread['num'],
+                            'last_thread_id' => $thread['num']
+                        ])->save();
                 } else {
                     Cache::put('search_thread',1, now()->addMinutes(10));
                 }

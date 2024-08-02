@@ -43,13 +43,13 @@ class LoadCommand extends Command
         if (isset($res['error'])) {
             $getThread->delete();
             Cache::put('search_thread',1, now()->addMinutes(10));
-            (new Telegram)->send(
+            /*(new Telegram)->send(
                 $chat,
                 Bots::where(['provider' => 'Telegram', 'active'=> 1])->first(),
                 'Тред удален. Найди новый, одебилевший от нихуя неделания долбоеб. Извените, сегодня больше без мэмов',
                 Telegram::SEND_MESSAGE,
                 Telegram::TYPE_TEXT
-            );
+            );*/
             return Command::FAILURE;
         }
         $last_id = '';
